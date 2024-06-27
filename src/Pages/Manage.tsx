@@ -20,7 +20,7 @@ import {
   useServerConfig,
 } from "../uitls/server";
 import { download, jsonFormat } from "../uitls";
-import { CodeEditor } from "../uitls/useMonacoEdit";
+import CodeEditor from "../components/CodeEditor";
 import * as API from "../api";
 import ListCard, { ProCard } from "../components/ListCard";
 import ChainCard from "../components/ListCard/Chains";

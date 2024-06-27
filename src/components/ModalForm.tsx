@@ -27,6 +27,8 @@ export type ModalFormProps<T = Record<string, any>> = Omit<
   /** @name 受控的打开关闭 */
   open?: ModalProps["open"];
   /** @name 打开关闭的事件 */
+  defaultOpen?: ModalProps["open"];
+  /** @name 打开关闭的事件 */
   onOpenChange?: (visible: boolean) => void;
   /**
    * 不支持 'visible'，请使用全局的 visible
@@ -49,6 +51,7 @@ const ModalForm: React.FC<ModalFormProps> = (props) => {
     onFinish: propOnFinish,
     trigger,
     open: propOpen,
+    defaultOpen,
     onOpenChange: propOnOpenChange,
     modalProps,
     title,
@@ -58,7 +61,7 @@ const ModalForm: React.FC<ModalFormProps> = (props) => {
     isFull,
     ...other
   } = props;
-  const [open, setOpen] = useBindValue(propOpen, false);
+  const [open, setOpen] = useBindValue(propOpen, defaultOpen, false);
   const [form] = Form.useForm();
   const onCancel = useCallback(
     () => {
